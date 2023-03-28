@@ -55,7 +55,8 @@ const App = () => {
       // psuedocode:
       // if a word has qu in the first syllable, move all the consonants and the qu to the end, and add "ay"
       // Split the word up by syllables, and if the first syllable ends in qu, move all the consonants and the u to the end, and add "ay"
-      // Split word
+      // splitting syllable code ref: https://codepen.io/Linrstudio/pen/GRKPJKa
+      // Syllable rules: https://www.juicyenglish.com/blog/how-to-divide-words-into-syllables
 
       const syllableRegex = /[^aeiouy]*[aeiouy]+(?:[^aeiouy]*$|[^aeiouy](?=[^aeiouy]))?/gi;
       // Squealing
@@ -73,7 +74,20 @@ const App = () => {
         eachWord = (syllableArray.join(""))
         return eachWord
       }
+// In order to see English words converted to Pig Latin, as the user of the application, I need to see words that have no vowels other than "y" translated by moving all the consonant to the end and add "ay".
 
+// Branch: y-functionality
+
+    let noVowelArray = []
+      if(vowelsArray.length === 0) {
+        if(eachWord.split("").includes("y")){
+          noVowelArray = eachWord.split("y")
+          noVowelArray.unshift("y")
+          noVowelArray.push("ay")
+          eachWord = noVowelArray.join("")
+        }return eachWord 
+    }
+      
 
 
       // ACTION ITEM: this return will be the output of your Pig Latin'd code
