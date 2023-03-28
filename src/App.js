@@ -32,22 +32,49 @@ const App = () => {
       console.log("vowelsArray:", vowelsArray)
 
       // ACTION ITEM: your Pig Latin logic goes here!
-// psuedocode:
-// if word begins with vowel translate by adding "way" to the end of the word
-// check with if statement within .map  
-// for each word that starts with vowel concatinate "way" (possible .push)
-// create new array with .map 
-// input: array of strings
-// output: array of strings
-// process: take in array 
 
+      // psuedocode:
+      // if word begins with vowel translate by adding "way" to the end of the word
+      // check with if statement within .map  
+      // for each word that starts with vowel concatinate "way" (possible .push)
+      // create new array with .map 
+      // input: array of strings
+      // output: array of strings
+      // process: take in array
+
+      
       if(eachWord[0] === "a" ||
-      eachWord[0] === "e" ||
-      eachWord[0] === "i" ||
+        eachWord[0] === "e" ||
+        eachWord[0] === "i" ||
         eachWord[0] === "o" ||
         eachWord[0] === "u") {
-      eachWord += "way"
+        eachWord += "way"
+        return eachWord
       }
+
+      // psuedocode:
+      // if a word has qu in the first syllable, move all the consonants and the qu to the end, and add "ay"
+      // Split the word up by syllables, and if the first syllable ends in qu, move all the consonants and the u to the end, and add "ay"
+      // Split word
+
+      const syllableRegex = /[^aeiouy]*[aeiouy]+(?:[^aeiouy]*$|[^aeiouy](?=[^aeiouy]))?/gi;
+      // Squealing
+      let syllableArray = eachWord.match(syllableRegex)
+      // "Squea" "ling"
+      let firstSyllableArray = []
+      if(syllableArray[0].includes("qu")) {
+        firstSyllableArray = (syllableArray[0].split("qu"))
+        // "s" "ea"
+        syllableArray.shift()
+        syllableArray.unshift(firstSyllableArray[1])
+        syllableArray.push(firstSyllableArray[0])
+        syllableArray.push("quay")
+        console.log(syllableArray.join(""))
+        eachWord = (syllableArray.join(""))
+        return eachWord
+      }
+
+
 
       // ACTION ITEM: this return will be the output of your Pig Latin'd code
       return eachWord
