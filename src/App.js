@@ -79,16 +79,37 @@ const App = () => {
 // Branch: y-functionality
 
     let noVowelArray = []
-      if(vowelsArray.length === 0) {
-        if(eachWord.split("").includes("y")){
-          noVowelArray = eachWord.split("y")
-          noVowelArray.unshift("y")
-          noVowelArray.push("ay")
-          eachWord = noVowelArray.join("")
-        }return eachWord 
+    if(vowelsArray.length === 0) {
+      if(eachWord.split("").includes("y")){
+        noVowelArray = eachWord.split("y")
+        noVowelArray.unshift("y")
+        noVowelArray.push("ay")
+        eachWord = noVowelArray.join("")
+      }return eachWord 
     }
-      
+    
+    //Branch: Consonant Functionality
+    //Pseudo Code:
+    // If the word starts with a consonant, move each consonant to the end and add "ay"
+    // Find the first vowel, and move everything before it to the end.
+    // Use two loops to make an array of the first and second halves of the word, then movethe first part to the end and add "ay"
 
+    let splitArr1 = []
+    for(let i=0; i<(eachWord.indexOf(vowelsArray[0])); i++){
+      splitArr1.push(eachWord[i])
+    }
+    console.log(splitArr1)
+
+    let splitArr2 = []
+    for(let i=eachWord.indexOf(vowelsArray[0]); i<eachWord.length; i++){
+      splitArr2.push(eachWord[i])
+    }
+    console.log(splitArr2)
+
+    splitArr2 = splitArr2.concat(splitArr1)
+    splitArr2.push("ay")
+
+    eachWord = splitArr2.join("")
 
       // ACTION ITEM: this return will be the output of your Pig Latin'd code
       return eachWord
