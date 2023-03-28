@@ -32,8 +32,22 @@ const App = () => {
       console.log("vowelsArray:", vowelsArray)
 
       // ACTION ITEM: your Pig Latin logic goes here!
+// psuedocode:
+// if word begins with vowel translate by adding "way" to the end of the word
+// check with if statement within .map  
+// for each word that starts with vowel concatinate "way" (possible .push)
+// create new array with .map 
+// input: array of strings
+// output: array of strings
+// process: take in array 
 
-    
+      if(eachWord[0] === "a" ||
+      eachWord[0] === "e" ||
+      eachWord[0] === "i" ||
+        eachWord[0] === "o" ||
+        eachWord[0] === "u") {
+      eachWord += "way"
+      }
 
       // ACTION ITEM: this return will be the output of your Pig Latin'd code
       return eachWord
